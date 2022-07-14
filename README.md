@@ -279,11 +279,9 @@ password=postgres
 1. The source code of your project.
 2. One SQL file named strictly **cs213.sql**, we will use this file to rebuild your database in the server. Please place this file into the root path(the same level of folder *src, data,...*). Delete documents as follow:
 
-*project_readme.md,*
-
  *README.md,*
 
- *document_assets*
+ *pic*
 
 Choose all files and folder in root path, and make a zip **using your sid as zip name**.
 
