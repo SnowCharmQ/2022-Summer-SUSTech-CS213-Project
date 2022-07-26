@@ -9,11 +9,4 @@ import java.util.List;
 public interface InstructorService {
     void addInstructor(int userId, String firstName, String lastName);
 
-    /**
-     *
-     * @param instructorId
-     * @param semesterId
-     * @return
-     */
-    List<CourseSection> getInstructedCourseSections(int instructorId, int semesterId);
 }

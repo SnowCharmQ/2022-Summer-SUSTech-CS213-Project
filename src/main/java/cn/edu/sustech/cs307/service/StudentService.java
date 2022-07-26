@@ -179,33 +179,6 @@ public interface StudentService {
     void addEnrolledCourseWithGrade(int studentId, int sectionId, @Nullable Grade grade);
 
     /**
-     * For teachers to give students grade.
-     *
-     * @param studentId student id is in database
-     * @param sectionId section id in test cases that have selected by the student
-     * @param grade     a new grade
-     */
-    void setEnrolledCourseGrade(int studentId, int sectionId, Grade grade);
-
-    /**
-     * Queries grades of all enrolled courses in the given semester for the given student
-     *
-     * If a student selected one course for over one times, for example
-     * failed the course and passed it in the next semester,
-     * in the {@Code Map<Course, Grade>}, it only record the latest grade.
-     *
-     * @param studentId
-     * @param semesterId the semester id, null means return all semesters' result.
-     * @return A map from enrolled courses to corresponding grades.
-     * If the grade is a hundred-mark score, the value should be wrapped by a
-     * {@code HundredMarkGrade} object.
-     * If the grade is pass or fail, the value should be {@code PassOrFailGrade.PASS}
-     * or {@code PassOrFailGrade.FAIL} respectively.
-     * If the grade is not set yet, the value should be null.
-     */
-    Map<Course, Grade> getEnrolledCoursesAndGrades(int studentId, @Nullable Integer semesterId);
-
-    /**
      * Return a course table in current week according to the date.
      *
      * @param studentId
@@ -215,14 +188,4 @@ public interface StudentService {
      */
     CourseTable getCourseTable(int studentId, Date date);
 
-    /**
-     * check whether a student satisfy a certain course's prerequisites.
-     *
-     * @param studentId
-     * @param courseId
-     * @return true if the student has passed the course's prerequisites (>=60 or PASS).
-     */
-    boolean passedPrerequisitesForCourse(int studentId, String courseId);
-
-    Major getStudentMajor(int studentId);
 }

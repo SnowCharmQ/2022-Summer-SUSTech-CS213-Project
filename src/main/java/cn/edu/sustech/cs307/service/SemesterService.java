@@ -29,5 +29,4 @@ public interface SemesterService {
 
     List<Semester> getAllSemesters();
 
-    Semester getSemester(int semesterId);
 }

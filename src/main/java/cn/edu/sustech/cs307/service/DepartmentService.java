@@ -19,10 +19,4 @@ public interface DepartmentService {
 
     List<Department> getAllDepartments();
 
-    /**
-     * If there is no Department about specific id, throw EntityNotFoundException.
-     * @param departmentId
-     * @return
-     */
-    Department getDepartment(int departmentId);
 }
