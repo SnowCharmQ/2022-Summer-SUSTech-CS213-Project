@@ -87,7 +87,7 @@ You will notice the database you designed in task 1 can not perfectly match what
 │  sampleResult.txt
 │  semesters.json
 │  studentCourses.json
-│  tree.txt
+│  task1.zip
 │  users.json
 │  
 ├─courseTable2
@@ -114,21 +114,17 @@ You will notice the database you designed in task 1 can not perfectly match what
 │      searchCourseName.json
 │      searchCourseNameResult.json
 │      
-├─searchCourse2
-│      searchCourseBasic.json
-│      searchCourseBasicResult.json
-│      searchCourseCid.json
-│      searchCourseCidResult.json
-│      searchCourseInstructor.json
-│      searchCourseInstructorResult.json
-│      searchCourseMixed.json
-│      searchCourseMixedResult.json
-│      searchCourseName.json
-│      searchCourseNameResult.json
-│      
-└─task1
-        course_info.json
-        select_course.csv
+└─searchCourse2
+        searchCourseBasic.json
+        searchCourseBasicResult.json
+        searchCourseCid.json
+        searchCourseCidResult.json
+        searchCourseInstructor.json
+        searchCourseInstructorResult.json
+        searchCourseMixed.json
+        searchCourseMixedResult.json
+        searchCourseName.json
+        searchCourseNameResult.json
 ```
 
 ### Task 6: Implement the codes
@@ -171,9 +167,9 @@ Notice that you have designed two different databases, you need to describe one 
 
 ### **Part 3. Task 2**
 
-Introduce how to design the programs/scripts for importing data, and give the core codes of your scripts.
+Introduce how to design the programs/scripts for importing the data in **Task 1**, and give the core codes of your scripts.
 
-Introduce how to improve the efficiency of importing data and give the core codes. You can design some experiments to improve the efficiency of your work. Make sure that the experiments should be reasonable, and the improvements should be obvious. Also, you may need to prepare to show your scripts and how it works in the presentation. Prepare some queries in advance!
+Introduce how to improve the efficiency of importing the data and give the core codes. You can design some experiments to improve the efficiency of your work. Make sure that the experiments should be reasonable, and the improvements should be obvious. Also, you may need to prepare to show your scripts and how it works in the presentation. Prepare some queries in advance!
 
 ### Part 4. Task 3 and Task 4
 
@@ -317,15 +313,15 @@ You need to record all your DDLs in the sql file. Don't submit two or more sql f
 
 3. Delete documents as follow:
 
-*README.md,*
+   *README.md,*
 
-*pic*
+   *pic*
 
 Choose all files and folder in root path, and make a zip **using your sid as zip name**.
 
 Please make sure your database can **be rebuilt by the SQL file and work properly** as we stated above.
 
-1. A personal report. Make a zip **(NOT RAR,** recommend to use 7z**)** file of 2, and submit this **zip file and a pdf report** on sakai .
+1. A personal report. Make a zip **(NOT RAR,** recommend to use 7z) file of 2, and submit this **zip file and a pdf report** on sakai .
 2. **Do not import jar manually, use maven instead**. In this project, we use Maven to manage dependence libraries. If you want to introduce a new library, you need to record it in pom.xml. Your dependencies should be downloadable from the Maven Central repository, or your codes will fail to be compiled.
 
 ### **Tips**
