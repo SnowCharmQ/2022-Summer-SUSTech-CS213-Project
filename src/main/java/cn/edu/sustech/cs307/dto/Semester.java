@@ -35,6 +35,7 @@ public class Semester {
         return Objects.hash(id, name, begin, end);
     }
 
+    // For Debug Framework
     @Override
     public String toString() {
         return "Semester{" +

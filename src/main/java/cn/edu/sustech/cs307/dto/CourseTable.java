@@ -86,6 +86,7 @@ public class CourseTable {
         return Objects.hash(table);
     }
 
+    // For Debug Framework
     @Override
     public String toString() {
         var sb = new StringBuilder();

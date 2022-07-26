@@ -5,6 +5,7 @@ public class Major {
     public String name;
     public Department department;
 
+    // For Debug Framework
     @Override
     public String toString() {
         return "Major{" +

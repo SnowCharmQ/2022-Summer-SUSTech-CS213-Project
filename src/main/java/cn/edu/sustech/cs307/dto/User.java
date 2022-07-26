@@ -30,6 +30,7 @@ public abstract class User {
         return Objects.hash(id, fullName);
     }
 
+    // For Debug Framework
     @Override
     public String toString() {
         return "User{" +

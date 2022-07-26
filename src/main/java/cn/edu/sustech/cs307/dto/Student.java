@@ -28,6 +28,7 @@ public class Student extends User {
         return Objects.hash(super.hashCode(), enrolledDate, major);
     }
 
+    // For Debug Framework
     @Override
     public String toString() {
         return "Student{" +

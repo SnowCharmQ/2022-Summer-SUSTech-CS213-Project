@@ -24,6 +24,7 @@ public class Department {
         return Objects.hash(id, name);
     }
 
+    // For Debug Framework
     @Override
     public String toString() {
         return "Department{" +

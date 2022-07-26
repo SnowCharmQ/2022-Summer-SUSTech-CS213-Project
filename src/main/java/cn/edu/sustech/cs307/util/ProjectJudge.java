@@ -151,7 +151,7 @@ public final class ProjectJudge {
             result.elapsedTimeNs.addAndGet(System.nanoTime() - beforeTime);
             result.passCount.addAndGet(IntStream.range(0, courseTableParams.size()).parallel()
                     .filter(it -> courseTableExpected.get(it).equals(courseTableResults.get(it))).count());
-
+            // Wrong Cases Checker
             IntStream.range(0, courseTableParams.size()).parallel()
                     .filter(it -> !courseTableExpected.get(it).equals(courseTableResults.get(it)))
                     .forEach(it -> System.err.printf("testCourseTables %s failed for %s %s %s, expect: \n%s\nget:\n%s\n\n",
