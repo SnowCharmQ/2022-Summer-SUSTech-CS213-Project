@@ -3,6 +3,7 @@ package cn.edu.sustech.cs307.dto;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class CourseSearchEntry {
     /**
@@ -49,5 +50,13 @@ public class CourseSearchEntry {
     @Override
     public int hashCode() {
         return Objects.hash(course, section, sectionClasses, conflictCourseNames);
+    }
+
+    // For Debug Framework
+    @Override
+    public String toString() {
+        return String.format("\n\tCourseSearchEntry{id:%s, secID:%s, %s[%s], clsID:%s, cf_s:%s}",
+                course.id, section.id, course.name, section.name, sectionClasses.stream().map(c->c.id+"")
+                        .collect(Collectors.joining(",", "(", ")")), conflictCourseNames);
     }
 }

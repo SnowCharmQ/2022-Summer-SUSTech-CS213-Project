@@ -34,4 +34,14 @@ public class Semester {
     public int hashCode() {
         return Objects.hash(id, name, begin, end);
     }
+
+    @Override
+    public String toString() {
+        return "Semester{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", begin=" + begin +
+                ", end=" + end +
+                '}';
+    }
 }

@@ -53,6 +53,10 @@ public final class ProjectJudge {
             result.elapsedTimeNs.addAndGet(System.nanoTime() - beforeTime);
             result.passCount.addAndGet(IntStream.range(0, searchCourseParams.size()).parallel()
                     .filter(it -> searchCourseExpected.get(it).equals(searchCourseResult.get(it))).count());
+            // Wrong Cases Checker
+            IntStream.range(0, searchCourseParams.size())
+                    .filter(it -> !searchCourseExpected.get(it).equals(searchCourseResult.get(it)))
+                    .forEach(it -> System.err.printf("test Search Courses failed for %s\nexpect:%s\nget:%s\n\n", searchCourseParams.get(it), searchCourseExpected.get(it), searchCourseResult.get(it)));
         }
         return result;
     }
@@ -96,6 +100,9 @@ public final class ProjectJudge {
                 evalResult.elapsedTimeNs.addAndGet(System.nanoTime() - beforeTime);
                 if (expected == result) {
                     evalResult.passCount.incrementAndGet();
+                } else {
+                    System.err.printf("Failed for %s, real %s, expect %s, get %s\n", enrollCourseParams.get(i),
+                            importer.mapSectionId(enrollCourseParams.get(i).get(1)), expected, result);
                 }
                 if (expected == StudentService.EnrollResult.SUCCESS) {
                     evalResult.succeedSections.add(enrollCourseParams.get(i));
@@ -123,6 +130,8 @@ public final class ProjectJudge {
                 result.passCount.incrementAndGet();
             } catch (IllegalStateException e) {
                 e.printStackTrace();
+                System.err.printf("Test Drop Enrolled Courses failed for %d, %d, expect %s, get %s\n",
+                        it.get(0), importer.mapSectionId(it.get(1)), "Drop success", "errored");
             }
         });
         result.elapsedTimeNs.set(System.nanoTime() - beforeTime);
@@ -142,6 +151,15 @@ public final class ProjectJudge {
             result.elapsedTimeNs.addAndGet(System.nanoTime() - beforeTime);
             result.passCount.addAndGet(IntStream.range(0, courseTableParams.size()).parallel()
                     .filter(it -> courseTableExpected.get(it).equals(courseTableResults.get(it))).count());
+
+            IntStream.range(0, courseTableParams.size()).parallel()
+                    .filter(it -> !courseTableExpected.get(it).equals(courseTableResults.get(it)))
+                    .forEach(it -> System.err.printf("testCourseTables %s failed for %s %s %s, expect: \n%s\nget:\n%s\n\n",
+                            courseTableDir.getName(),
+                            courseTableParams.get(it),
+                            Date.valueOf(LocalDate.ofEpochDay(courseTableParams.get(it).get(1))),
+                            Date.valueOf(LocalDate.ofEpochDay(courseTableParams.get(it).get(1))).toLocalDate().getDayOfWeek(),
+                            courseTableExpected.get(it), courseTableResults.get(it)));
         }
         return result;
     }
@@ -165,6 +183,7 @@ public final class ProjectJudge {
                     int section = importer.mapSectionId(Integer.parseInt(it.getKey()));
                     try {
                         studentService.dropCourse(student, section);
+                        System.err.printf("FAILED For [%s, %s], expect exception", student, section);
                     } catch (IllegalStateException e) {
                         result.passCount.getAndIncrement();
                     }

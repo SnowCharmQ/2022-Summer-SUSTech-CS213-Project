@@ -39,4 +39,18 @@ public class CourseSectionClass {
     public int hashCode() {
         return Objects.hash(id, instructor, dayOfWeek, weekList, classBegin, classEnd, location);
     }
+
+    // For Debug Framework
+    @Override
+    public String toString() {
+        return "CourseSectionClass{" +
+                "id=" + id +
+                ", instructor=" + instructor +
+                ", dayOfWeek=" + dayOfWeek +
+                ", weekList=" + weekList +
+                ", classBegin=" + classBegin +
+                ", classEnd=" + classEnd +
+                ", location='" + location + '\'' +
+                '}';
+    }
 }

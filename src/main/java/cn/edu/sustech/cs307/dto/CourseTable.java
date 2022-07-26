@@ -1,9 +1,11 @@
 package cn.edu.sustech.cs307.dto;
 
 import java.time.DayOfWeek;
+import java.util.Comparator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 
 public class CourseTable {
@@ -40,6 +42,22 @@ public class CourseTable {
         }
 
         @Override
+        public String toString() {
+            return "CourseTableEntry{" +
+                    "courseFullName='" + courseFullName + '\'' +
+                    ", instructor=" + instructor +
+                    ", classBegin=" + classBegin +
+                    ", classEnd=" + classEnd +
+                    ", location='" + location + '\'' +
+                    ", instructor=" + instructor +
+                    '}';
+        }
+
+        public String toBeautifiedString() {
+            return String.format("CourseTableEntry{fn:%s, begin:%s, end:%s, location:%s, instructor:%s}", courseFullName, classBegin, classEnd, location, instructor);
+        }
+
+        @Override
         public int hashCode() {
             return Objects.hash(courseFullName, instructor, classBegin, classEnd, location);
         }
@@ -66,5 +84,26 @@ public class CourseTable {
     @Override
     public int hashCode() {
         return Objects.hash(table);
+    }
+
+    @Override
+    public String toString() {
+        var sb = new StringBuilder();
+        sb.append("CourseTable{\n");
+        var lst = table
+                .keySet()
+                .stream()
+                .sorted(Comparator.comparingInt(DayOfWeek::getValue))
+                .map(a -> table.get(a)).collect(Collectors.toList());
+        for (int i = 0; i < lst.size(); i++) {
+            var ordered = lst.get(i)
+                    .stream()
+                    .sorted(Comparator.comparing(a -> a.courseFullName))
+                    .map(CourseTableEntry::toBeautifiedString)
+                    .collect(Collectors.joining(",\n\t", "\t[", "],\n"));
+            sb.append(i + 1).append(": ").append(ordered);
+        }
+        sb.append("}");
+        return sb.toString();
     }
 }
