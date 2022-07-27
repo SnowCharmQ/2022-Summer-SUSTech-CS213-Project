@@ -295,8 +295,8 @@ public class ReferenceServiceFactory extends ServiceFactory {
 
 #### **Java-specific rules**
 
-- You should **NOT** modify or add any class in package cn.edu.sustech.cs307. Use another package for your implementations.
-- You should **NOT** extend any class in package cn.edu.sustech.cs307.dto.
+<!-- - You should **NOT** modify or add any class in package cn.edu.sustech.cs307. Use another package for your implementations.
+- You should **NOT** extend any class in package cn.edu.sustech.cs307.dto. -->
 - In this project, we use Maven to manage dependent libraries. If you want to introduce a new library, you need to record it in pom.xml. Your dependencies should be downloadable from the Maven Central repository.
 
 #### SQL file
